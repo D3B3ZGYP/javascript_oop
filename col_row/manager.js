@@ -28,7 +28,7 @@ class Manager{
     }
 
     /**
-     * @param {Colspanype | RowspanType} element
+     * @param {ColspanType | RowspanType} element
      * @returns {void}
      */
     addElement(element){

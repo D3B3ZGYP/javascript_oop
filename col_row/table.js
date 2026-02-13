@@ -33,6 +33,8 @@ class Table{
 
         for (const i of headerArray){
             const th = thead.appendChild(document.createElement("th"))
+            th.innerText = i.name
+            th.colSpan = i.colspan ? i.colspan : 1
         }
     }
 
