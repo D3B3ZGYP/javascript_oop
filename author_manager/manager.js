@@ -1,8 +1,16 @@
 /**
- * @import {AuthorType} from "./index"
+ * @import {AuthorType} from "./index.js"
  * 
  * @callback TableCallback
  * @param {Author[]} authorList
+ * @returns {void}
+ *
+ * @callback AddElementResultCallback
+ * @param {string} message
+ * @returns {void}
+ *
+ * @callback ImportResultCallback
+ * @param {string} message
  * @returns {void}
  */
 
@@ -31,6 +39,20 @@ class AuthorManager{
         this.#tableCallback = value
     }
 
+    /**
+     * @param {ImportResultCallback} value
+     */
+    set importResultCallback(value){
+        this.#importResultCallback = value
+    }
+
+    /**
+     * @param {AddElementResultCallback} value
+     */
+    set addElementResultCallback(value){
+        this.#addElementResultCallback = value
+    }
+
     constructor(){
         this.#authorList = []
     }
@@ -42,13 +64,15 @@ class AuthorManager{
      */
     addElement(element){
         const author = new Author()
-        
         author.id = this.#authorList.length
         author.name = element.author
         author.work = element.work
         author.concept = element.concept
 
         this.#authorList.push(author)
+
+        if (this.#tableCallback)
+            this.#tableCallback(this.#authorList)
     }
 
     /**

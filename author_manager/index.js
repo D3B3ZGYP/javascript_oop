@@ -41,7 +41,7 @@ const table = new TableView("table", headerArray, manager)
 table.appendTo(document.body)
 navbar.addViewElement(table, "Táblázat")
 
-const form = new FormView("form")
+const form = new FormView("form", manager, formFields)
 form.appendTo(document.body)
 navbar.addViewElement(form, "Form")
 
