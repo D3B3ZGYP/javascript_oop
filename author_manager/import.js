@@ -1,6 +1,10 @@
-import {ViewElement} from "./viewElement.js";
+import { AuthorManager } from "./manager.js";
+import { ViewElement } from "./viewElement.js";
 
 class ImportView extends ViewElement{
+    /**
+     * @type {AuthorManager}
+     */
     #manager
 
     constructor(id, manager) {
@@ -8,3 +12,5 @@ class ImportView extends ViewElement{
         this.#manager = manager
     }
 }
+
+export {ImportView}

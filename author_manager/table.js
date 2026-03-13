@@ -27,8 +27,6 @@ class TableView extends ViewElement{
         this.#tbody = table.appendChild(document.createElement("tbody"))
 
         this.#manager.tableCallback = (authorList) => {
-            this.#tbody.innerHTML = ""
-
             for (const i of authorList){
                 const tr = this.#tbody.appendChild(document.createElement("tr"))
 

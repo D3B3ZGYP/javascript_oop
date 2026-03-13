@@ -70,9 +70,6 @@ class AuthorManager{
         author.concept = element.concept
 
         this.#authorList.push(author)
-
-        if (this.#tableCallback)
-            this.#tableCallback(this.#authorList)
     }
 
     /**
