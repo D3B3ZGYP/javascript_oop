@@ -31,6 +31,8 @@ class FormView extends ViewElement{
         this.#manager = manager
         this.#formFieldList = []
 
+        const notification = this.div.appendChild(document.createElement("div"))
+
         this.#form = this.div.appendChild(document.createElement("form"))
 
         for (const formFieldType of formFieldTypeList)
@@ -42,11 +44,13 @@ class FormView extends ViewElement{
             e.preventDefault()
 
             const elem = this.#createElement()
-            if (elem){
-                manager.addElement(elem)
-                e.target.reset()
-            }
+            manager.addElement(elem)
         })
+
+        this.#manager.addElementResultCallback = (message) => {
+            notification.innerText = message
+            setTimeout(() => {notification.innerHTML = ""}, 1500)
+        }
     }
 
     /**

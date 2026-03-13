@@ -29,11 +29,6 @@ const formFields = [{
 const headerArray = ['Szerző', 'Mű', 'Fogalom']
 
 const manager = new AuthorManager()
-manager.addElement({
-    author: "aaaa",
-    concept: "bbbb",
-    work: "cccc"
-})
 
 const navbar = new NavigationBar()
 navbar.appendTo(document.body)
@@ -48,7 +43,6 @@ navbar.addViewElement(form, "Form")
 
 const importView = new ImportView("import", manager)
 importView.appendTo(document.body)
-importView.addViewElement(importView, "Import/Export")
+navbar.addViewElement(importView, "Import/Export")
 
 navbar.activate("table")
-manager.getAllElement()

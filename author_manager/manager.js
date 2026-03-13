@@ -69,7 +69,32 @@ class AuthorManager{
         author.work = element.work
         author.concept = element.concept
 
-        this.#authorList.push(author)
+        if (author.validate()){
+            this.#authorList.push(author)
+            this.#addElementResultCallback("Sikeresen hozzáadva")
+        } else {
+            this.#addElementResultCallback("Nem volt sikeres az elem felvétel")
+        }
+    }
+
+    /**
+     * 
+     * @param {AuthorType[]} elementList 
+     * @returns {void}
+     */
+    addElementList(elementList){
+        for (const element of elementList){
+            const author = new Author()
+            author.id = this.#authorList.length
+            author.name = element.author
+            author.work = element.work
+            author.concept = element.concept
+
+            this.#authorList.push(author)
+            this.#tableCallback(author)
+        }
+
+        this.#importResultCallback("Sikeresen hozzáadva")
     }
 
     /**
@@ -141,6 +166,10 @@ class Author{
      */
     set concept(value){
         this.#concept = value
+    }
+
+    validate(){
+        return this.#concept && this.#work && this.#name
     }
 }
 

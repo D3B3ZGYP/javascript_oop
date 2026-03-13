@@ -27,13 +27,22 @@ class TableView extends ViewElement{
         this.#tbody = table.appendChild(document.createElement("tbody"))
 
         this.#manager.tableCallback = (authorList) => {
+        if (authorList.length == 0){
+            const tr = this.#tbody.appendChild(document.createElement("tr"))
+            const td = createTableCell(tr, "Nincs megjelenítendő adat")
+            td.colSpan = 3
+        } else {
             for (const i of authorList){
                 const tr = this.#tbody.appendChild(document.createElement("tr"))
 
                 createTableCell(tr, i.name)
                 createTableCell(tr, i.work)
                 createTableCell(tr, i.concept)
-            }
+        }}}
+
+        this.activateCallback = () => {
+            this.#tbody.innerHTML = ""
+            this.#manager.getAllElement()
         }
     }
 }
