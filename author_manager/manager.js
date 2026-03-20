@@ -90,8 +90,14 @@ class AuthorManager{
             author.work = element.work
             author.concept = element.concept
 
-            this.#authorList.push(author)
-            this.#tableCallback(author)
+            if (author.validate()){
+                this.#authorList.push(author)
+                this.#importResultCallback("Sikeresen hozzáadva")
+            }
+            else{
+                this.#importResultCallback("Nem volt sikeres az elem felvétel")
+                break
+            }
         }
 
         this.#importResultCallback("Sikeresen hozzáadva")
@@ -103,6 +109,18 @@ class AuthorManager{
      */
     getAllElement(){
         this.#tableCallback(this.#authorList)
+    }
+
+    /**
+     * 
+     * @returns {string}
+     */
+    getExportString(){
+        const result = []
+        for (const i of this.#authorList)
+            result.push(`${i.name};${i.work};${i.concept}`)
+
+        return result.join("\n")
     }
 }
 

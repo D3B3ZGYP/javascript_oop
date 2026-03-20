@@ -55,7 +55,7 @@ class FormView extends ViewElement{
 
     /**
      *
-     * @returns {AuthorType | null}
+     * @returns {AuthorType | {}}
      */
     #createElement(){
         let result = {}
@@ -71,7 +71,7 @@ class FormView extends ViewElement{
         if (validation)
             return result
         else
-            return null
+            return {}
     }
 }
 

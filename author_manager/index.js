@@ -29,7 +29,6 @@ const formFields = [{
 const headerArray = ['Szerző', 'Mű', 'Fogalom']
 
 const manager = new AuthorManager()
-
 const navbar = new NavigationBar()
 navbar.appendTo(document.body)
 
